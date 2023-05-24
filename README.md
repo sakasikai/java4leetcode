@@ -1,1 +1,2 @@
-# java4note4leetcode
+author: ZhangXiaoQi
+usage: track code for learning and leetcode
