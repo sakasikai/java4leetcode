@@ -9,7 +9,6 @@ import org.springframework.util.CollectionUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -36,7 +35,7 @@ public class y2023m5 {
 
 //        testCollectionUtils();
 //        testStringUtils();
-//        testObjectUtils();
+//        testObjectUtils();x
     }
 
     public static void testObjects(){
