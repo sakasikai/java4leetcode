@@ -3,8 +3,6 @@ package playground.interest.myMath;
 import lombok.Builder;
 import org.springframework.util.Assert;
 
-import java.util.Scanner;
-
 @Builder
 public class Fraction {
 
@@ -118,27 +116,5 @@ public class Fraction {
         } else {
             return gcd(b, mod);
         }
-    }
-
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);    //创建扫描器对象
-        System.out.print("输入第一个分数的分子:");
-        int a1 = input.nextInt();       //接受第一个分数的分子
-        System.out.print("输入第一个分数的分母:");
-        int a2 = input.nextInt();       //接受第一个分数的分母
-        System.out.print("输入第二个分数的分母:");
-        int b2 = input.nextInt();       //接受第二个分数的分母
-        Fraction a = new Fraction(a1, a2);   //使用第一个构造器
-        Fraction b = new Fraction(b2);        //使用第二个构造器
-        System.out.println(a.toString());
-        System.out.println(b.toString());
-        System.out.println(a.ADD(b).toString());
-        System.out.println(a.SUB(b).toString());
-        System.out.println(a.mul(b).toString());
-        System.out.println(a.div(b).toString());
-        System.out.println(a.le(b));
-        System.out.println(a.ge(b));
-        System.out.println(a.eq(a));
-
     }
 }

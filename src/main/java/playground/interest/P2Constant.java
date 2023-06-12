@@ -5,13 +5,6 @@ import playground.interest.myMath.Fraction;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * @author maiqi
- * @Title: P2Constant
- * @ProjectName Java4leetcode
- * @Description: TODO
- * @date 2023/6/11 16:38
- */
 public interface P2Constant {
     List<Integer> M1 = Arrays.asList(10, 12, 5, 7, 0, 25, 9, 6, 8);
     List<Integer> M2 = Arrays.asList(2, 0, 3, 9, 1, 5, 4, 5, 2);

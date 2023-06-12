@@ -11,13 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- * @author maiqi
- * @Title: P2Resolve
- * @ProjectName Java4leetcode
- * @Description: TODO
- * @date 2023/6/11 16:46
- */
 public class P2Resolve implements P2Constant {
 
     public static void main(String[] args) {
@@ -32,34 +25,6 @@ public class P2Resolve implements P2Constant {
 
         List<Integer> newMedicine2 = new ArrayList<>(Arrays.asList(25, 40, 16, 8, 20, 10, 6, 0, 4));
         r.doGauss(medicine, newMedicine2);
-
-        /**
-         　List<List<Integer>> collect = Stream.of(M2, M4, M5).collect(Collectors.toList());
-
-         List<List<Fraction>> collect2 = new ArrayList<>();
-         collect.forEach(eq -> {
-         collect2.add(eq.stream().map(v -> Fraction.of(v, 1).reduce()).collect(Collectors.toList()));
-         });
-
-         collect2.get(0).replaceAll(f->f.mul(Fraction.of(3, 1)));
-         List<Integer> integers = collect2.stream().map(vec -> vec.stream().map(Fraction::toInteger).collect(Collectors.toList()))
-         .reduce((vec1, vec2) -> {
-         for (int j = 0; j < vec1.size(); j++) {
-         vec1.set(j, vec1.get(j) + vec2.get(j));
-         }
-         return vec1;
-         }).get();
-         System.out.println(integers);
-         System.out.println(M6);
-         　**/
-    }
-
-    /**
-     * 　* @Description: AX = y
-     *
-     **/
-    public void doGauss(List<List<Integer>> X) {
-        doGauss(X, null);
     }
 
     public List<List<Integer>> composeXY(List<List<Integer>> X, List<Integer> y) {
@@ -82,12 +47,17 @@ public class P2Resolve implements P2Constant {
             ln.add(y.get(j));
         }
 
-//        for (int i = 0; i < feat_dim; i++) {
-//            result.get(i).forEach(elm -> System.out.print(elm + " "));
-//            System.out.println();
-//        }
+        for (int i = 0; i < feat_dim; i++) {
+            result.get(i).forEach(elm -> System.out.print(elm + " "));
+            System.out.println();
+        }
+        System.out.println();
 
         return result;
+    }
+
+    public void doGauss(List<List<Integer>> X) {
+        doGauss(X, null);
     }
 
     /**

@@ -121,9 +121,4 @@ public class GaussHelper implements P2Constant {
         }
         return hint;
     }
-
-    public static void main(String[] args) {
-        System.out.println(1 / Math.pow(1, 6));
-        System.out.println(1e-6);
-    }
 }
