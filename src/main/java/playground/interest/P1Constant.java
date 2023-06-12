@@ -1,4 +1,4 @@
-package playground.EarnMoney;
+package playground.interest;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
  * @Description: TODO
  * @date 2023/6/11 12:20
  */
-public interface LAConstant {
+public interface P1Constant {
 
     Integer MARKER_YEAR_BEGIN = 1990, MARKER_YEAR_END = 1998;
 

@@ -1,4 +1,4 @@
-package playground.EarnMoney;
+package playground.interest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,24 +10,26 @@ import java.util.List;
  * @Description: TODO
  * @date 2023/6/11 10:43
  */
-public class LinearAlgebra implements LAConstant {
+public class P1Resolve implements P1Constant {
 
     public static void main(String[] args) {
-        LinearAlgebra user = new LinearAlgebra();
+        P1Resolve client = new P1Resolve();
+        List<Integer> nums_end = client.problem1();
 
-        List<Integer> nums_end = user.problem1();
-
-        System.out.println("分布比例:");
+        System.out.print("\n区间   :");
         for (int i = 0; i < 6; i += 2) {
             System.out.printf("[%d, %d) ", i, i + 1);
         }
-        System.out.println();
+        System.out.print("\n数量   :");
         nums_end.forEach(i -> System.out.print(i + " "));
+        System.out.print("\n分布比例:");
+        int sum = nums_end.stream().reduce(Integer::sum).get();
+        nums_end.forEach(i -> System.out.printf("%.2f ", (double) i / sum));
 
-        System.out.println("总数增长率:");
+        System.out.println("\n\n增长率 :");
         Integer old_sum = MARKER_NUMS.stream().reduce(Integer::sum).get(),
                 new_sum = nums_end.stream().reduce(Integer::sum).get();
-        System.out.printf("原数量：%d, 新数量：%d, 增长率：%.2f%%", old_sum, new_sum, (double) (100 * (new_sum - old_sum) / old_sum));
+        System.out.printf("原数量：%d, 新数量：%d, 增长率：%.2f%%", old_sum, new_sum, 100 * ((double) new_sum / old_sum - 1));
 
     }
 
