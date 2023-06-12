@@ -66,10 +66,13 @@ public class Fraction {
     }
 
     public Integer toInteger() {
+        reduce();
         return Math.round((float) this.molecular / this.denominator);
     }
 
-    public String toString() {                     //字符串输出
+    public String toString() {
+        //字符串输出
+        reduce();
         return String.format("%d/%d", this.molecular, this.denominator);
     }
 
@@ -78,11 +81,17 @@ public class Fraction {
     }
 
     public boolean ge(Fraction b) {
+        if (b.molecular == 0) {
+            return this.molecular > 0;
+        }
         Fraction A_div_B = this.div(b);
         return A_div_B.molecular >= A_div_B.denominator;
     }
 
     public boolean eq(Fraction b) {
+        if (b.molecular == 0) {
+            return this.molecular == 0;
+        }
         Fraction A_div_B = this.div(b);
         return A_div_B.molecular == A_div_B.denominator;
     }

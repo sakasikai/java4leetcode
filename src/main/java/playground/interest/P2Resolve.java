@@ -1,5 +1,6 @@
 package playground.interest;
 
+import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 import playground.interest.myMath.GaussHelper;
 
@@ -22,10 +23,6 @@ public class P2Resolve implements P2Constant {
     public static void main(String[] args) {
         List<List<Integer>> medicine = Stream.of(M1, M2, M3, M4, M5, M6, M7).collect(Collectors.toList());
 
-//        System.out.println("源数据");
-//        medicine.forEach(System.out::println);
-//        System.out.println();
-
         // 找最大线性无关组
         P2Resolve r = new P2Resolve();
         r.doGauss(medicine);
@@ -36,11 +33,25 @@ public class P2Resolve implements P2Constant {
         List<Integer> newMedicine2 = new ArrayList<>(Arrays.asList(25, 40, 16, 8, 20, 10, 6, 0, 4));
         r.doGauss(medicine, newMedicine2);
 
-        // gauss消元 ==》 每个阶梯的1对应col就是可配置药，其他的就是被配置药
-//        standardMedicine.forEach(aMedicine -> {
-//
-//            System.out.println("(%s) 按比例可以配置 药剂：%s");
-//        });
+        /**
+         　List<List<Integer>> collect = Stream.of(M2, M4, M5).collect(Collectors.toList());
+
+         List<List<Fraction>> collect2 = new ArrayList<>();
+         collect.forEach(eq -> {
+         collect2.add(eq.stream().map(v -> Fraction.of(v, 1).reduce()).collect(Collectors.toList()));
+         });
+
+         collect2.get(0).replaceAll(f->f.mul(Fraction.of(3, 1)));
+         List<Integer> integers = collect2.stream().map(vec -> vec.stream().map(Fraction::toInteger).collect(Collectors.toList()))
+         .reduce((vec1, vec2) -> {
+         for (int j = 0; j < vec1.size(); j++) {
+         vec1.set(j, vec1.get(j) + vec2.get(j));
+         }
+         return vec1;
+         }).get();
+         System.out.println(integers);
+         System.out.println(M6);
+         　**/
     }
 
     /**
@@ -51,19 +62,9 @@ public class P2Resolve implements P2Constant {
         doGauss(X, null);
     }
 
-    /**
-     * 　* @Description: AX = y
-     *
-     **/
-    public void doGauss(List<List<Integer>> X, List<Integer> y) {
-        System.out.println("初等行变换：X | y ====> 倒三角阶梯矩阵");
-        String msg = GaussHelper.of(this.composeXY(X, y)).gauss();
-        System.out.println(msg + "\n");
-
-    }
-
     public List<List<Integer>> composeXY(List<List<Integer>> X, List<Integer> y) {
         int x_num = X.size(), feat_dim = X.get(0).size();
+        Assert.isTrue(feat_dim == M1.size());
         if (CollectionUtils.isEmpty(y)) {
             y = new ArrayList<>();
             y.addAll(Collections.nCopies(feat_dim, 0));
@@ -80,6 +81,22 @@ public class P2Resolve implements P2Constant {
             }
             ln.add(y.get(j));
         }
+
+//        for (int i = 0; i < feat_dim; i++) {
+//            result.get(i).forEach(elm -> System.out.print(elm + " "));
+//            System.out.println();
+//        }
+
         return result;
+    }
+
+    /**
+     * 　* @Description: AX = y
+     **/
+    public void doGauss(List<List<Integer>> X, List<Integer> y) {
+        System.out.println("初等行变换：X | y ====> 倒三角阶梯矩阵");
+        String msg = GaussHelper.of(this.composeXY(X, y)).gauss();
+        System.out.println(msg + "\n");
+
     }
 }

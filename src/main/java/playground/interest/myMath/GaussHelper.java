@@ -19,9 +19,6 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GaussHelper implements P2Constant {
-    // epsilon stands for 0.0
-    double eps;
-
     // count of uncertainties
     int n;
 
@@ -36,19 +33,15 @@ public class GaussHelper implements P2Constant {
     // equations
     List<List<Fraction>> eqs;
 
-    public static GaussHelper of(List<List<Integer>> eqs) {
+    public static GaussHelper of(List<List<Integer>> xy) {
         List<List<Fraction>> eqs2 = new ArrayList<>();
-        eqs.forEach(eq -> {
-            eqs2.add(eq.stream().map(v -> Fraction.of(v, 1).reduce()).collect(Collectors.toList()));
-        });
+        xy.forEach(eq -> eqs2.add(eq.stream().map(v -> Fraction.of(v, 1).reduce()).collect(Collectors.toList())));
 
         return builder()
-                .n(eqs.get(0).size() - 1) // 未知变量个数
-                .dim(eqs.size())
+                .n(xy.get(0).size() - 1) // 未知变量个数
+                .dim(xy.size())
                 .maxStep(0)
                 .eqs(eqs2) // 列式
-                .eps(1e-6)
-                .precision(Math.max(0, 3))
                 .build();
     }
 
@@ -109,7 +102,7 @@ public class GaussHelper implements P2Constant {
     }
 
     public String analyse(int flag) {
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < dim; i++) {
             eqs.get(i).forEach(elm -> System.out.print(elm.toInteger() + " "));
             System.out.println();
         }
