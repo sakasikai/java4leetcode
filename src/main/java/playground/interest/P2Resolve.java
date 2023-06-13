@@ -33,8 +33,7 @@ public class P2Resolve implements P2Constant {
         int x_num = X.size(), feat_dim = X.get(0).size();
         Assert.isTrue(feat_dim == M1.size());
         if (CollectionUtils.isEmpty(y)) {
-            y = new ArrayList<>();
-            y.addAll(Collections.nCopies(feat_dim, 0));
+            y = new ArrayList<>(Collections.nCopies(feat_dim, 0));
             Collections.fill(y, 0);
         }
 
