@@ -4,12 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * @author maiqi
- * @Title: LinearAlgebra
- * @Description: TODO
- * @date 2023/6/11 10:43
- */
 public class P1Resolve implements P1Constant {
 
     public static void main(String[] args) {
@@ -38,7 +32,6 @@ public class P1Resolve implements P1Constant {
         List<Integer> rangeNum = new ArrayList<>(MARKER_NUMS);
 
         while (y <= MARKER_YEAR_END) {
-
             if (y != MARKER_YEAR_BEGIN) {
                 rangeNum = passTwoYears(rangeNum);
             } // else
@@ -58,11 +51,10 @@ public class P1Resolve implements P1Constant {
         }
 
         for (int i = 1; i <= 2; i++) {
-            int j = i - 1; // last_age_range
+            int j = i - 1; // nextNums[1], nextNums[2] 的数量由过去两年数量决定
             nextNums[i] = (int) (nums.get(j) * SERVICE_RATE.get(j));
         }
 
         return Arrays.asList(nextNums);
     }
-
 }

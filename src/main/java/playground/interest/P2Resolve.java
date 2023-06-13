@@ -16,13 +16,15 @@ public class P2Resolve implements P2Constant {
     public static void main(String[] args) {
         List<List<Integer>> medicine = Stream.of(M1, M2, M3, M4, M5, M6, M7).collect(Collectors.toList());
 
-        // 找最大线性无关组
+        // 小问1，找最大线性无关组
         P2Resolve r = new P2Resolve();
         r.doGauss(medicine);
 
+        // 小问2，新药1
         List<Integer> newMedicine1 = new ArrayList<>(Arrays.asList(14, 0, 5, 12, 8, 40, 15, 10, 8));
         r.doGauss(medicine, newMedicine1);
 
+        // 小问2，新药2
         List<Integer> newMedicine2 = new ArrayList<>(Arrays.asList(25, 40, 16, 8, 20, 10, 6, 0, 4));
         r.doGauss(medicine, newMedicine2);
     }

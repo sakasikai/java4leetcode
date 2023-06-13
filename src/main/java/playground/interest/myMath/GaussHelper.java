@@ -10,11 +10,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * @author maiqi
- * @Title: GuassHelper
- * @date 2023/6/11 17:51
- */
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
