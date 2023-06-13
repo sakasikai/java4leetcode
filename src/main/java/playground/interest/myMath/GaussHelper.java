@@ -20,8 +20,6 @@ public class GaussHelper implements P2Constant {
     // dimension of uncertainty
     int dim;
 
-    int precision;
-
     int maxStep;
 
     // [X | y] (dim = n+1)
