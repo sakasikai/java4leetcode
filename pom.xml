@@ -22,9 +22,17 @@
         <commons-io.version>2.11.0</commons-io.version>
 
         <springdoc.version>1.7.0</springdoc.version>
+
+        <guava.version>11.0.2</guava.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
         <!--   https://github.com/ECharts-Java/ECharts-Java     -->
         <dependency>
             <groupId>org.icepear.echarts</groupId>

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * @author maiqi
@@ -60,5 +62,14 @@ public class dxStrCollUtils {
         }
 
         System.out.println(lst);
+    }
+
+    public void uObjectUtils() {
+        Optional<String> opt = Optional.ofNullable("sad");
+        Objects.requireNonNull(opt);
+
+        String s = opt.filter(v -> v.startsWith("s")).map(v -> v + " sda").orElse("non");
+
+        System.out.println(!Objects.isNull(s));
     }
 }
