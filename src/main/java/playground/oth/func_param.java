@@ -21,16 +21,32 @@ public class func_param {
 //
 //        System.out.println(trap(height));
 
-        playByte();
+//        playByte();
+
+        String hs;
+        System.out.printf("h ^ (h >>> 16) = %35s\n", (hs = Integer.toBinaryString(hash("hahaha"))));
+        System.out.printf("前%d位不动%n", hs.length() - 16);
+        System.out.printf("后%d位和前%d位异或%n", 16, hs.length() - 16);
     }
 
-    public static void playByte(){
+    static final int hash(Object key) {
+        int h;
+        //计算key的hashCode, h = Objects.hashCode(key)
+        //h >>> 16表示对h无符号右移16位，高位补0，然后h与h >>> 16按位异或
+
+        h = key.hashCode();
+        System.out.printf("h              = %35s\n", Integer.toBinaryString(h));
+        System.out.printf("h >>> 16       = %35s\n", Integer.toBinaryString(h >>> 16));
+        return (key == null) ? 0 : h ^ (h >>> 16);
+    }
+
+    public static void playByte() {
         int len = 6;
         int ctl = 1 << len;
         System.out.println(Byte.parseByte(String.valueOf(ctl)));
     }
 
-    public static void increase(int x){
+    public static void increase(int x) {
         x++;
     }
 
