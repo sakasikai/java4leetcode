@@ -1,8 +1,8 @@
 package playground.regexp;
 
 import com.google.common.base.Preconditions;
+import playground.utils.TestMain;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,22 +18,8 @@ public class Basic {
     public static void main(String[] args) {
         String example = "This is a small example string";
 
-        Basic r = new Basic();
-//            Arrays.stream(r.getClass().getDeclaredMethods()).forEach(m-> System.out.println(m.getName()));
-
-        // invoke
-        // 每个方法都传递 example 参数
-        Arrays.stream(r.getClass().getDeclaredMethods()).
-                filter(m -> !m.getName().contains("main")).
-                forEach(m -> {
-                    try {
-                        System.out.println("[+] invoking:" + m.getName());
-                        m.invoke(r, example);
-                        System.out.println("[-] done");
-                    } catch (IllegalAccessException | InvocationTargetException e) {
-                        throw new RuntimeException(e);
-                    }
-                });
+        TestMain<Basic> r = new TestMain<>(Basic.class);
+        r.invokeAll(example);
 
     }
 
