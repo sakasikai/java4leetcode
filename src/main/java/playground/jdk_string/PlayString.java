@@ -35,6 +35,17 @@ public class PlayString {
         System.out.println("join: " + join);
     }
 
+    /**
+     * 　* @Description: TODO r = Pattern.compile(regex).matcher(stringToBeMatched)
+     * <p>
+     * find() first, end, group
+     * replace()
+     *
+     * </p>
+     * 　* @author: maiqi
+     * 　* @date: 2023/7/5 13:57
+     *
+     **/
     public void replace(String in) {
         String s = in.replaceAll("[ w]", "-");
         System.out.println("replaced: " + s);

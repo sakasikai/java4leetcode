@@ -23,6 +23,12 @@ public class Basic {
 
     }
 
+    /**
+     * 　* @Description: TODO Pattern, Matcher
+     * 　* @author: maiqi
+     * 　* @date: 2023/7/5 13:56
+     *
+     **/
     public void match(String example) {
         Pattern pattern = Pattern.compile("\\w+");
         //如果想忽略大小写敏感度，可以使用线面这个语句
@@ -31,10 +37,8 @@ public class Basic {
         while (matcher.find()) {
             System.out.print("start index: " + matcher.start());
             System.out.print(" end index: " + matcher.end() + " ");
-            System.out.println(matcher.group());
-            Preconditions.checkArgument(
-                    example.substring(matcher.start(), matcher.end()).
-                            equals(matcher.group()), "err");
+            System.out.println(matcher.group()); // TODO eq example.substring(start, end)
+            Preconditions.checkArgument(example.substring(matcher.start(), matcher.end()).equals(matcher.group()), "err");
         }
 
     }
