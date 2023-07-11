@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Queue;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-// TODO 复杂topo
+
 public class lc210 {
 
     public static void main(String[] args) {
@@ -31,7 +31,7 @@ public class lc210 {
                 var2[i] = new int[]{ints[ii], ints[ii + 1]};
             }
 
-            int[] ans = r.findOrder3(nNodes, var2);
+            int[] ans = r.findOrder$3(nNodes, var2);
             System.out.println(Arrays.toString(ans));
             System.out.println("Done\n");
         });
@@ -45,54 +45,56 @@ public class lc210 {
     List<Integer> inDs = new ArrayList<>();
 
     /**
-     * 　* @Description: 三周目
-     * 　* @author: maiqi
-     * 　* @date: 2023/7/11 09:56
-     *
-     **/
-    public int[] findOrder3(int N, int[][] loFromHis) {
+     * @param N
+     * @param loFromHis
+     * @return int[]
+     * @description: 三周目
+     * @author: maiqi
+     * @update: 2023/7/11 17:36
+     */
+    public int[] findOrder$3(int N, int[][] loFromHis) {
         List<Integer> ret = new ArrayList<>();
         inDs.clear();
         inDs.addAll(Collections.nCopies(N, 0));
-
         tab.clear();
-        for (int k = 0; k < N; k++) {
-            tab.computeIfAbsent(k, kNone -> Optional.of(new LinkedList<>()));
-        }
 
         // 拉链法存储 tab0，入点指向所有出点
         for (int[] loFromHi : loFromHis) {
             int lo = loFromHi[0], hi = loFromHi[1];
 
-            // 优雅！ TODO 设置缺省值
-            Optional<LinkedList<Integer>> losOpt;
-            (losOpt = tab.get(hi)).ifPresent(los -> los.add(lo));
-            tab.put(hi, losOpt);
+            // 优雅！ TODO 处理初始空值，取到并操作
+            tab.computeIfAbsent(hi, none -> Optional.of(new LinkedList<>()))
+                    .ifPresent(los -> los.add(lo));
+            tab.put(hi, tab.get(hi));
             inDs.set(lo, inDs.get(lo) + 1);
         }
 
-        // TODO 流创建Queue
-        Queue<Integer> q = inDs.stream()
-                .filter(v -> v == 0)
-                .collect(Collectors.toCollection(LinkedList::new));
+        // TODO stream range 创建Queue
+        Queue<Integer> q = IntStream.range(0, N).filter(i -> inDs.get(i) == 0).
+                collect(LinkedList::new, LinkedList::add, LinkedList::addAll);
 
         while (!q.isEmpty()) {
             Integer nd = q.remove();
             // 去除nd
             ret.add(nd);
-            tab.get(nd).ifPresent(los -> {
-                // los 是静态拉链，不会改变
-                los.stream().filter(lo -> inDs.get(lo) > 0).forEach(lo -> {
-                    // 入度减少
-                    inDs.set(lo, inDs.get(lo) - 1);
-                    if (inDs.get(lo) == 0) {
-                        q.add(lo);
-                    }
+            if (tab.containsKey(nd)) { // 没出现的点，就是null
+                tab.get(nd).ifPresent(los -> {
+                    // los 是静态拉链，不会改变
+                    los.stream().filter(lo -> inDs.get(lo) > 0).forEach(lo -> {
+                        // 入度减少
+                        inDs.set(lo, inDs.get(lo) - 1);
+                        // 只有第一次减少为0的时候，被计算，此后都会被过滤掉
+                        if (inDs.get(lo) == 0) {
+                            q.add(lo);
+                        }
+                    });
                 });
-            });
+            }
         }
 
-        return ret.stream().mapToInt(Integer::intValue).toArray();
+        return inDs.stream().filter(v -> v == 0).count() == N
+                ? ret.stream().mapToInt(Integer::intValue).toArray()
+                : new int[]{};
     }
 
 
