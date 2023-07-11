@@ -39,7 +39,7 @@ public class SimpleMainResolver {
                 filter(m -> Stream.of("main", "Main", "util", "Util").noneMatch(p -> m.getName().contains(p)))
                 .forEach(m -> {
                     try {
-                        System.out.println("[+] invoking: " + m.getName());
+                        System.out.println("\033[32m[+] invoking: " + m.getName() + "\033[0m");
 
                         if (m.getParameterCount() > 0) {
                             m.invoke(resolver, str);
@@ -47,7 +47,7 @@ public class SimpleMainResolver {
                             m.invoke(resolver);
                         }
 
-                        System.out.println("[-]");
+                        System.out.println();
                     } catch (IllegalAccessException | InvocationTargetException e) {
                         throw new RuntimeException(e);
                     }

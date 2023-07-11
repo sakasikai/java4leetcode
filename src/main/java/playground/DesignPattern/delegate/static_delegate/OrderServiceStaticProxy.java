@@ -1,4 +1,7 @@
-package playground.DesignPattern.delegate.staticDelegate;
+package playground.DesignPattern.delegate.static_delegate;
+
+import playground.DesignPattern.Interface.IOrderService;
+import playground.DesignPattern.delegate.entity.Order;
 
 /**
  * @author maiqi
@@ -19,17 +22,18 @@ public class OrderServiceStaticProxy implements IOrderService {
         this.before();
         Order ret = target.createOrder();
         this.after(ret);
+
         return ret;
     }
 
     public void before() {
         System.out.println("received demand...");
         System.out.println("[+]starting creating Order...");
-        System.out.print("===>");
+        System.out.print("===> ");
     }
 
     public void after(Order order) {
-        order.setOrderInfo(String.format("made by proxy[%s]", OrderServiceStaticProxy.class.getSimpleName()));
+        order.setOrderInfo(String.format("made by proxy[%s]", this.getClass().getSimpleName()));
         System.out.println("[-]done");
     }
 }

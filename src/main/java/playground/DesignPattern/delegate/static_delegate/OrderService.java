@@ -1,6 +1,8 @@
-package playground.DesignPattern.delegate.staticDelegate;
+package playground.DesignPattern.delegate.static_delegate;
 
 import lombok.NoArgsConstructor;
+import playground.DesignPattern.Interface.IOrderService;
+import playground.DesignPattern.delegate.entity.Order;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
