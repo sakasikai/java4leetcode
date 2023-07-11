@@ -71,11 +71,6 @@ public class lc210 {
             inDs.set(lo, inDs.get(lo) + 1);
         }
 
-//        tab.forEach((k, v)->{
-//            System.out.println(k + " ==> " + v.orElse(null));
-//        });
-//        System.out.println(inDs);
-
         // TODO 流创建Queue
         Queue<Integer> q = inDs.stream()
                 .filter(v -> v == 0)
