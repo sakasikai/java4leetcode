@@ -33,23 +33,21 @@ public class lc310 {
      */
     public List<Integer> findMinHeightTrees$3(int N, int[][] edges) {
         List<Integer> ret = new ArrayList<>();
-        Map<Integer, Optional<List<Integer>>> tabs = new HashMap<>();
+        Map<Integer, List<Integer>> tabs = new HashMap<>();
         List<Integer> inDs = new ArrayList<>(Collections.nCopies(N, 0));
 
         if (N <= 2) {
+            // TODO IntStream.range + boxed ==》List
             return IntStream.range(0, N).boxed().collect(Collectors.toList());
         }
 
         for (int[] e : edges) {
             int p = e[0], q = e[1];
-            tabs.computeIfAbsent(p, non -> Optional.of(new LinkedList<>())).ifPresent(outs -> {
-                outs.add(q);
-                inDs.set(q, inDs.get(q) + 1);
-            });
-            tabs.computeIfAbsent(q, non -> Optional.of(new LinkedList<>())).ifPresent(outs -> {
-                outs.add(p);
-                inDs.set(p, inDs.get(p) + 1);
-            });
+            // TODO computeIfAbsent 代替 Optional
+            tabs.computeIfAbsent(p, non -> new LinkedList<>()).add(q);
+            inDs.set(q, inDs.get(q) + 1);
+            tabs.computeIfAbsent(q, non -> new LinkedList<>()).add(p);
+            inDs.set(p, inDs.get(p) + 1);
         }
 
         // q是搜索范围
@@ -68,15 +66,14 @@ public class lc310 {
             ndLeft -= sz;
             while (--sz >= 0) {
                 Integer t = q.remove();
-                if (tabs.containsKey(t)) {
-                    tabs.get(t).ifPresent(innerNds -> innerNds.stream()
-                            .filter(nd -> inDs.get(nd) > 0).forEach(nd -> {
-                                inDs.set(nd, inDs.get(nd) - 1);
-                                if (inDs.get(nd) == 1) {
-                                    q.add(nd);
-                                }
-                            }));
-                }
+                // TODO 代替if判断
+                Optional.of(tabs.get(t)).ifPresent(innerNds -> innerNds.stream()
+                        .filter(nd -> inDs.get(nd) > 0).forEach(nd -> {
+                            inDs.set(nd, inDs.get(nd) - 1);
+                            if (inDs.get(nd) == 1) {
+                                q.add(nd);
+                            }
+                        }));
             }
         }
 
