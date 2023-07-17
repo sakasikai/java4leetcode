@@ -1,9 +1,9 @@
-package playground.DesignPattern.delegate.dynamic_delegate;
+package PatternDesign.delegate.dynamic_delegate;
 
+import PatternDesign.delegate.entity.Order;
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
-import playground.DesignPattern.delegate.entity.Order;
 
 import java.lang.reflect.Method;
 

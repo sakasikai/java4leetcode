@@ -125,7 +125,6 @@
         </dependency>
 
 
-
         <!-- springdoc-openapi-ui -->
         <!-- OpenAPI 3 -->
         <dependency>

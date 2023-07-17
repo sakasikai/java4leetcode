@@ -1,11 +1,11 @@
-package playground.DesignPattern.delegate;
+package PatternDesign.delegate;
 
-import playground.DesignPattern.Interface.IOrderService;
-import playground.DesignPattern.delegate.dynamic_delegate.CGLibDynamicDelegate;
-import playground.DesignPattern.delegate.dynamic_delegate.JDKDynamicDelegate;
-import playground.DesignPattern.delegate.entity.Order;
-import playground.DesignPattern.delegate.static_delegate.OrderService;
-import playground.DesignPattern.delegate.static_delegate.OrderServiceStaticProxy;
+import PatternDesign.delegate.Interface.IOrderService;
+import PatternDesign.delegate.dynamic_delegate.CGLibDynamicDelegate;
+import PatternDesign.delegate.dynamic_delegate.JDKDynamicDelegate;
+import PatternDesign.delegate.entity.Order;
+import PatternDesign.delegate.static_delegate.OrderService;
+import PatternDesign.delegate.static_delegate.OrderServiceStaticProxy;
 import playground.utils.SimpleMainResolver;
 
 /**

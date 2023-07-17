@@ -1,7 +1,7 @@
-package playground.DesignPattern.delegate.static_delegate;
+package PatternDesign.delegate.static_delegate;
 
-import playground.DesignPattern.Interface.IOrderService;
-import playground.DesignPattern.delegate.entity.Order;
+import PatternDesign.delegate.Interface.IOrderService;
+import PatternDesign.delegate.entity.Order;
 
 /**
  * @author maiqi

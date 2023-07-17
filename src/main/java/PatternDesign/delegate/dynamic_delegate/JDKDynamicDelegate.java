@@ -1,6 +1,6 @@
-package playground.DesignPattern.delegate.dynamic_delegate;
+package PatternDesign.delegate.dynamic_delegate;
 
-import playground.DesignPattern.delegate.entity.Order;
+import PatternDesign.delegate.entity.Order;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

@@ -1,4 +1,4 @@
-package playground.DesignPattern.delegate.entity;
+package PatternDesign.delegate.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
-package playground.DesignPattern.Interface;
+package PatternDesign.delegate.Interface;
 
-import playground.DesignPattern.delegate.entity.Order;
+import PatternDesign.delegate.entity.Order;
 
 /**
  * @author maiqi
