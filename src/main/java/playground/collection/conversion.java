@@ -168,7 +168,7 @@ public class conversion {
      */
     public static void stream_inter_op(){
         System.out.println("stream 中间操作...");
-        Integer[] data = {4, 5, 3, 6, 2, 5, 5, 1, 100};
+        Integer[] data = {4, 5, 3, 6, 2, 5, 5, 1, 23, 21, 100};
         int[] ints = Arrays.stream(data).
                 sorted((p, q) -> -p.compareTo(q)).
                 map(i -> i + 2).
@@ -176,6 +176,7 @@ public class conversion {
                 distinct().
                 filter(i -> i < 40).
                 toArray();
+        System.out.println(Arrays.toString(ints));
 
         String collect = IntStream.of(ints).boxed().
                 map(Object::toString).
@@ -184,15 +185,15 @@ public class conversion {
 
         IntStream.of(ints).boxed().
                 skip(2).limit(4). // ==> [2-] ==> [2, 6]
-                forEach(i-> System.out.print(i+","));
-        System.out.println("  ==> [2-] ==> [2, 6]");
+                forEach(i -> System.out.print(i + ","));
+        System.out.println("  ==> [2-] ==> [2, 6)");
 
         List<String> collect1 = IntStream.of(ints).boxed().
                 limit(4).skip(2). // ==> [0-4] ==> [2, 4]
                         map(Object::toString).
                 collect(Collectors.toList());
         System.out.print(java.lang.String.join(",", collect1));
-        System.out.println("  ==> [0-4] ==> [2, 4]");
+        System.out.println("  ==> [0, 4) ==> [2, 4)");
 
         ArrPrint.defaultln();
     }
@@ -338,7 +339,7 @@ public class conversion {
             // chaos
             stream_play();
         } else { // run
-
+            stream_inter_op();
         }
 
     }
