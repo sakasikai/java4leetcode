@@ -32,9 +32,9 @@ public class lc1870 extends BsearchUtil {
     public int minSpeedOnTime(int[] dist, double hour) {
         int n = dist.length;
         if ((double) n - 1 + ((double) dist[n - 1] / 1e7) > hour) return -1;
-        // speed: [lo .. mid .. hi]
+        // speed: [lo .. mid .. hi] （在允许时间内的最小速度）
         // time: 耗时越大 <== false [hour] true ==> 耗时越小
-        // 递减曲线
+        // (小于hour时间的最小速度) ==> (lambda中写的是 test = true 的条件，而findLeft是因为在1..1e7范围中要找最小速度)
         return this.valueOfLeftBound$3(1, (int) 1e7 + 1, mid -> timeCost(dist, mid) <= hour);
     }
 
