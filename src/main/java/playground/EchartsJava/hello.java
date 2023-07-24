@@ -7,7 +7,10 @@ import org.icepear.echarts.render.Engine;
  * @author maiqi
  * @Title: hello
  * @ProjectName Java4leetcode
- * @Description: TODO
+ * @Description: <p>
+ * https://github.com/ECharts-Java/ECharts-Java
+ * https://github.com/ECharts-Java/ECharts-Java/blob/master/README.zh.md
+ * </p>
  * @date 2023/6/13 17:46
  */
 public class hello {
