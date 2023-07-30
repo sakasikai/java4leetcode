@@ -1,4 +1,4 @@
-package basic.double_pointers;
+package basic.double_ptr;
 
 public class lc75 {
     public void sortColors(int[] a) {
