@@ -30,17 +30,24 @@ public class y2023m5 {
     private static final String ERR = "err!";
 
 
-    public static void main(String[] args) {
-        testObjects();
+    public static void main(String[] args) throws ClassNotFoundException {
+        y2023m5 r = new y2023m5();
+        ClassLoader cl = r.getClass().getClassLoader();
+        Class<?> ret = cl.loadClass(r.getClass().getName());
+        Arrays.stream(ret.getDeclaredClasses()).forEach(System.out::println);
+        System.out.println("----");
+        System.out.println(ret.getName());
+        System.out.println(ret.getClassLoader());
+        //        testObjects();
 
 //        testCollectionUtils();
 //        testStringUtils();
 //        testObjectUtils();x
     }
 
-    public static void testObjects(){
+    public static void testObjects() {
         BiFunction<Integer, Integer, Integer> bf1 = Integer::sum;
-        Function<Integer, Integer> f1 = p->p*p*p, f2 = p->p*100;
+        Function<Integer, Integer> f1 = p -> p * p * p, f2 = p -> p * 100;
 
         // 函数式接口的组合
         Integer pipeRes = Objects.requireNonNull(bf1.andThen(f1).andThen(f2).apply(2, 4));
