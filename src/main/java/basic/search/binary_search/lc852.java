@@ -1,5 +1,7 @@
 package basic.search.binary_search;
 
+import utils.BsearchUtil;
+
 /**
  * @author maiqi
  * @title lc852

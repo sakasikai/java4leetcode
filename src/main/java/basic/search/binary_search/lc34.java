@@ -1,5 +1,7 @@
 package basic.search.binary_search;
 
+import utils.BsearchUtil;
+
 public class lc34 extends BsearchUtil {
 
     public int[] searchRange$3(int[] a, int target) {

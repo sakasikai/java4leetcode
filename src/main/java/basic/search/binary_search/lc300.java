@@ -1,5 +1,7 @@
 package basic.search.binary_search;
 
+import utils.BsearchUtil;
+
 import java.util.LinkedList;
 
 /**
