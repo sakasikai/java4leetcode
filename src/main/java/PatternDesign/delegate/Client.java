@@ -6,7 +6,7 @@ import PatternDesign.delegate.dynamic_delegate.JDKDynamicDelegate;
 import PatternDesign.delegate.entity.Order;
 import PatternDesign.delegate.static_delegate.OrderService;
 import PatternDesign.delegate.static_delegate.OrderServiceStaticProxy;
-import playground.utils.SimpleMainResolver;
+import Playground.utils.SimpleMainResolver;
 
 /**
  * @author maiqi
