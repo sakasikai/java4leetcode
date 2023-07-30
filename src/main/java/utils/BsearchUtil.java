@@ -21,8 +21,6 @@ public class BsearchUtil {
         return indexOf$3(a, l, r, match, true);
     }
 
-
-
     public int indexOf$3(int[] a, int l, int r, Predicate<Integer> match, boolean findRight) {
         if (l > r) return -1;
 
