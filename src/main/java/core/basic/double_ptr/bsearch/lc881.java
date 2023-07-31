@@ -1,4 +1,4 @@
-package core.basic.double_ptr;
+package core.basic.double_ptr.bsearch;
 
 import utils.BsearchUtil;
 
