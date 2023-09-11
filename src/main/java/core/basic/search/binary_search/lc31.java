@@ -20,27 +20,30 @@ public class lc31 extends BsearchUtil {
      */
     public void nextPermutation$3(int[] nums) {
         // 1,2,3 ==》1，3，2 ==》 3，2，1
-        // [asc...] lo [hi, ...] ==> [asc...] lo' [asc...] where a[lo'] = min{x| x > a[lo]}
-        int n = nums.length, lo = -1;
+        // asc最小，desc最大
+        // 对一个中间形态，先asc，再desc，寻找算法
+        // [asc...] pivot [highest, desc...] ==> [asc...] p' [asc...] where a[p'] = min{x| x > a[p]}
+        int n = nums.length, pivot = -1;
         for (int i = n - 1; i >= 0; i--) {
             if (i - 1 >= 0 && nums[i - 1] < nums[i]) { // [5,1,1]
-                lo = i - 1;
+                pivot = i - 1;
                 break;
             }
         }
 
-        if (lo == -1) {
+        if (pivot == -1) { // 最大perm
             Arrays.sort(nums);
             return;
         }
 
-        // B Search (desc, find_right)
-        int x = nums[lo];
-        int i = indexOfRightBound$3(nums, lo + 1, nums.length - 1, (mVal) -> mVal > x); // [1,5,1]
-        // swap by lo, i
-        nums[lo] = nums[i];
+        // B Search (desc, find_right) in [p+1, n-1]
+        int x = nums[pivot];
+        int i = indexOfRightBound$3(nums, pivot + 1, nums.length - 1, (mVal) -> mVal > x); // [1,5,1]
+        // swap(p, i)
+        nums[pivot] = nums[i];
         nums[i] = x;
-        Arrays.sort(nums, lo + 1, nums.length);
+        // [p+1, end)
+        Arrays.sort(nums, pivot + 1, nums.length);
     }
 
     /**

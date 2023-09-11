@@ -21,6 +21,7 @@ public class lc46 {
         for(int i=0; i<a.length; i++){
             if((state & 1<<i)!=0) continue;  // path中只能有一个a[i]
 
+            // 每次加入一个没有的元素
             path.add(a[i]);
             state |= 1<<i; // i位置1
 

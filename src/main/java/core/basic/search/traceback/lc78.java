@@ -12,8 +12,7 @@ public class lc78 {
     }
 
     public void dfs(int[] a, int start){
-        res.add((List<Integer>) path.clone());
-//        res.add(new LinkedList<>(path));
+        res.add(new LinkedList<>(path));
 
         for(int i=start; i<a.length; i++){ // 按顺序选取子集
             path.add(a[i]);

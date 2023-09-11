@@ -1,4 +1,4 @@
-package Contest.lc_w356;
+package lc_contest.w356;
 
 import java.util.Arrays;
 

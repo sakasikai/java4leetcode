@@ -1,4 +1,4 @@
-package Playground.collection;
+package Playground.stream;
 
 import Playground.utils.ArrPrint;
 
@@ -157,7 +157,6 @@ public class conversion {
                     System.out.println(collect2);
                     break;
                 default:
-                    continue;
             }
 
         ArrPrint.defaultln();
@@ -230,7 +229,7 @@ public class conversion {
         //           ...
 
         // max()/min()/reduce(P).get()
-        Integer v1= arr.stream().min(Integer::compareTo).get();
+        Integer v1 = arr.stream().min(Integer::compareTo).get();
         Integer v2 = arr.stream().max(Integer::compareTo).get();
         Integer v3 = arr.stream().reduce(Integer::sum).get();
         Integer v4 = arr.stream().reduce((p, q) -> p * q).get();
@@ -238,22 +237,22 @@ public class conversion {
                 "min:%d, max:%d, sum:%d, product:%d", v1, v2, v3, v4));
 
         // filter.findFirst() ==> Optional<Integer> ==> isPresent()/get()
-        Optional<Integer> first = arr.stream().filter(i -> i%7 == 0).findFirst();
-        if(first.isPresent())
-            System.out.println(first.get());
-        else
-            System.out.println("nope");
+        Optional<Integer> first = arr.stream().filter(i -> i % 7 == 0).findFirst();
+        Optional<Integer> any = arr.stream().filter(i -> i % 7 == 0).findAny();
+        System.out.println(first.orElse(-1));
 
         arr.add(42);
         arr.add(56);
 
         // filter(P).anyMatch() / count()
         boolean b = arr.stream().anyMatch(i -> i % 7 == 0);
-        if(b){
+        boolean b1 = arr.stream().noneMatch(i -> i % 7 == 0);
+        boolean b2 = arr.stream().allMatch(i -> i % 7 == 0);
+        if (b) {
             System.out.print("has 7*n, and ");
             long count = arr.stream().filter(i -> i % 7 == 0).count();
             System.out.println("count " + count);
-        }else
+        } else
             System.out.println("nope");
         System.out.println();
 

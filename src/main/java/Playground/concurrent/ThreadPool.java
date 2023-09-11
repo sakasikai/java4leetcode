@@ -36,15 +36,24 @@ public class ThreadPool {
         }
     }
 
-    static class myRunnable implements Runnable{
-        public void run(){
+    static class myRunnable implements Runnable {
+        public void run() {
             System.out.println(Thread.currentThread().getName()
                     + "==> 实现Runnable，解耦并发机制，摆脱继承限制");
             ArrPrint.defaultln();
         }
     }
 
-    public void playExecutorsNew(){
+    /**
+     * @description: <p>
+     * {@link Executors#newCachedThreadPool} </p><p>
+     * {@link Executors#newFixedThreadPool} </p><p>
+     * {@link Executors#newSingleThreadExecutor} </p><p>
+     * {@link Executors#newScheduledThreadPool} </p><p>
+     * </p>
+     * @update: 2023/9/7 18:12
+     */
+    public void playExecutorsNew() {
         // TODO java prebuilt-in ThreadPool
         // SynchronousQueue<Runnable>
         ExecutorService es1 = Executors.newCachedThreadPool();
@@ -74,7 +83,8 @@ public class ThreadPool {
 
         System.out.println("hhaha");
 
-        new Thread(()->{
+        // 匿名内部类
+        new Thread(() ->{
             try {
                 Thread.sleep(4000L);
             } catch (InterruptedException e) {

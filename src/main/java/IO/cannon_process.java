@@ -17,9 +17,9 @@ import java.util.stream.Collectors;
  * @Description: TODO
  * @date 2023/6/23 18:04
  */
-public class FileOperation {
+public class cannon_process {
     public static void main(String[] args) throws IOException {
-        FileOperation r = new FileOperation();
+        cannon_process r = new cannon_process();
         r.deleteCannonPictures();
     }
 
