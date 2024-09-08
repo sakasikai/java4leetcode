@@ -30,16 +30,14 @@ public class ThreadPool {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println(Thread.currentThread().getName()
-                    + "==> 继承Thread，override run()方法，耦合方式");
+            System.out.println(Thread.currentThread().getName() + "==> 继承Thread，override run()方法，耦合方式");
             ArrPrint.defaultln();
         }
     }
 
     static class myRunnable implements Runnable {
         public void run() {
-            System.out.println(Thread.currentThread().getName()
-                    + "==> 实现Runnable，解耦并发机制，摆脱继承限制");
+            System.out.println(Thread.currentThread().getName() + "==> 实现Runnable，解耦并发机制，摆脱继承限制");
             ArrPrint.defaultln();
         }
     }
