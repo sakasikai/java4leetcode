@@ -3,9 +3,18 @@ package core.basic.search.traceback;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * @description: <p>
+ * 全排列
+ * 给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列
+ * </p>
+ * @author: maiqi
+ * @update: 2023/10/8 08:59
+ */
 public class lc46 {
     List<List<Integer>> res = new LinkedList<>();
-    List<Integer> path = new LinkedList<>();
+    LinkedList<Integer> path = new LinkedList<>();
+
     public List<List<Integer>> permute(int[] a) {
         dfs(a, 0);
         return res;
@@ -27,8 +36,8 @@ public class lc46 {
 
             dfs(a, state);
 
-            path.remove(path.size() - 1);
-            state &= ~(1<<i); // i位置0
+            path.removeLast();
+            state &= ~(1 << i); // i位置0
         }
     }
 }

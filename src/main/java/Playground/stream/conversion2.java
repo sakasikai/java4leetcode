@@ -21,17 +21,40 @@ public class conversion2 {
         conversion2 cvr = new conversion2();
 //        cvr.stringToCharArrToIntArr();
 //        cvr.stringToInArr();
-        cvr.charsToArrLst();
+//        cvr.charsToArrLst();
+        cvr.palySplit();
     }
 
     /**
-    　* @Description: TODO String ==> String[] ==> Integer[] ==> int[]
-    　* @param: []
-    　* @return: void
-    　* @throws:
-    　* @author: maiqi
-    　* @date: 2023/3/29 20:52
-    　**/
+     * @description: <p>
+     * mapToInt + collect 有坑！
+     * </p>
+     * @update: 2023/10/16 18:33
+     */
+    public void palySplit() {
+        String line = "21 32 33, 12,  3, 1, -10";
+        System.out.println("String: " + line);
+
+        System.out.println(Arrays.toString(line.split("[, ]")));
+        System.out.println(Arrays.toString(line.split("[, ]+")));
+
+        // ✅List<Integer> collect = Arrays.stream(line.split(" ")).map(Integer::valueOf).collect(Collectors.toList());
+        // ❌List<Integer> collect = Arrays.stream(line.split(" ")).mapToInt(Integer::valueOf).collect()
+        List<Integer> lst = Arrays.stream(line.split("[, ]+"))
+                .map(Integer::valueOf)
+                .sorted().collect(Collectors.toCollection(ArrayList::new));
+        System.out.println(lst);
+    }
+
+    /**
+     * 　* @Description: TODO String ==> String[] ==> Integer[] ==> int[]
+     * 　* @param: []
+     * 　* @return: void
+     * 　* @throws:
+     * 　* @author: maiqi
+     * 　* @date: 2023/3/29 20:52
+     *
+     **/
     public void stringToCharArrToIntArr(){
         String line = "21 32 33, 12, 3, 1, -10";
         System.out.println("String: " + line);
